@@ -1,0 +1,11 @@
+A small interface to see the ID3 audio tags of all the files in a directory.
+
+Usage: tagid
+    Launches GUI
+
+Usage: tagid [OPTIONS] DIRECTORY
+    -e FORMAT,FORMAT...         Exclude file formats
+    -a                          All: paste untagged files, too. Excluded files are still excluded
+    -i INFO,INFO...             Info: which info(s) to print.
+                                INFO can be: name (of the file), title, artist, album. At least one must be given
+    -h                          Print this
