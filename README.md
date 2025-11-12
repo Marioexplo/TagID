@@ -21,5 +21,7 @@ sudo ./install.sh
 This will make [run.sh](run.sh) executable, link it in /bin to be available in the system and it will add a shortcut in your desktop.
 ## License
 TagID is licensed under the MIT license.  
+
+This project uses PySide6, licensed under the [LGPL v3](https://www.gnu.org/licenses/lgpl-3.0.html), and eyeD3, licensed under the [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).  
  
 The [Logo icon](install/Logo.png) is an artwork of [public domain](https://creativecommons.org/publicdomain/zero/1.0) by [paomedia](https://www.paomedia.com)
