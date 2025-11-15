@@ -1,6 +1,6 @@
 #!/bin/bash
-if [[ $EUID != 0 ]]; then
-    echo You have to run this with sudo to work
+if [[ $EUID == 0 ]]; then
+    echo This script should be run with normal privileges
     exit 1
 fi
 check_path() {
@@ -14,14 +14,16 @@ check_path() {
 }
 runner=$(cd "$(dirname "$(realpath "$0")")/.." && pwd)/run.sh
 desk=TagID.desktop
-desk_path=$(eval echo "~$SUDO_USER")/.local/share/applications/$desk
+desk_path=$HOME/.local/share/applications/$desk
 check_path /bin/tagid
 check_path "$desk_path"
 chmod +x "$runner"
 echo Made executable
-ln -sf "$runner" /bin/tagid
+echo A password might be asked to link the executable in /bin
+sudo ln -sf "$runner" /bin/tagid
 echo Linked in /bin
-echo "Icon=$(pwd)/Logo.png" >> $desk
+desk=install/$desk
+echo "Icon=$(pwd)/install/Logo.png" >> $desk
 cp -f $desk "$desk_path"
-echo Copied the .desktop in $desk_path
+echo Copied the .desktop in "$desk_path"
 echo Installation completed!

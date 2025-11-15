@@ -16,7 +16,7 @@ Now all you have to do is runnning the [install script](install/install.sh)
 ```
 cd TagID/install
 chmod +x install.sh
-sudo ./install.sh
+./install.sh
 ```
 This will make [run.sh](run.sh) executable, link it in /bin to be available in the system and it will add a shortcut in your desktop.
 ## License
