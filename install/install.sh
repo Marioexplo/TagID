@@ -6,13 +6,29 @@ fi
 check_path() {
     if [[ -f $1 ]]; then
         echo It looks like $1 already exists.
-        if [[ $(read -n 1 -p "Override it? ") =~ [Nn] ]]; then
+        if ! [[ $(read -n 1 -p "Override it? ") =~ [Yy] ]]; then
+            echo
             exit
         fi
         echo
     fi
 }
 runner=$(cd "$(dirname "$(realpath "$0")")/.." && pwd)/run.sh
+if ! [[ -d .venv ]] || (echo Virtual environment already present && [[ $(read -n 1 -p "Rebuild it? ") =~ [Yy] ]]); then
+    echo
+    if ! command -v python3 > /dev/null; then
+        echo python and pip are needed to install the virtual environment
+        echo Install them before continuing
+        exit 1
+    fi
+    echo Creating virtual environment
+    python3 -m venv ../.venv || exit 1
+    source "../.venv/bin/activate"
+    echo Installing eyeD3
+    pip install eyeD3
+    echo Installing PySide6
+    pip install pyside6
+fi
 desk=TagID.desktop
 desk_path=$HOME/.local/share/applications/$desk
 check_path /bin/tagid
