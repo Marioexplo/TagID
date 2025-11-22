@@ -1,14 +1,10 @@
-import eyeD3_check
-eyeD3_check.disable()
-del eyeD3_check
-
 from sys import argv, exit
 from os import path, scandir
 from eyed3 import load as load_tags, AudioFile
 
 argv.pop(0)
 argn = len(argv)
-if argv[0] != "-h": argn -= 1
+if argv[0] != "-h" and argv[0] != "--uninstall": argn -= 1
 i = 0
 all = False
 name = True
@@ -17,9 +13,6 @@ artist = True
 album = True
 while i < argn:
     match argv[i]:
-        case "-h":
-            print(open(path.dirname(path.realpath(__file__)) + "/Help.txt").read())
-            exit()
         case "-e":
             i += 1
             if i == argn:
@@ -48,6 +41,12 @@ while i < argn:
                         case _:
                             print(info + " is not a valid tag info")
                             exit(1)
+        case "-h":
+            print(open(path.dirname(path.realpath(__file__)) + "/Help.txt").read())
+            exit()
+        case "--uninstall":
+            from subprocess import run
+            exit(run(["sudo", "bash", path.dirname(path.realpath(__file__)) + "/uninstall.sh"]).returncode)
         case _:
             print(argv[i] + " is not a valid option")
             exit(1)

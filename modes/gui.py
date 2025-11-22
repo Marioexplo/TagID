@@ -1,7 +1,3 @@
-import eyeD3_check
-eyeD3_check.disable()
-del eyeD3_check
-
 import eyed3
 from os import path as Path, scandir
 from PySide6.QtWidgets import (QApplication, QScrollArea, QWidget, QVBoxLayout, QFrame, 
@@ -53,6 +49,7 @@ class Item(QFrame):
             super().__init__(text, alignment=Qt.AlignmentFlag.AlignLeft)
             self.setToolTip(text)
             self.setFixedWidth(width)
+            self.setStyleSheet("color: black")
 
     def check_tag(tag: str | None) -> str:
         if tag is None:
@@ -93,6 +90,7 @@ class Item(QFrame):
 last_pressed: Item = None
 
 lay_header = QWidget()
+lay_header.setStyleSheet("background: white")
 lay_header.setFixedWidth(1080)
 lay_header_lay = QHBoxLayout()
 lay_header_lay.setAlignment(Qt.AlignmentFlag.AlignLeft)
