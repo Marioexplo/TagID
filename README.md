@@ -25,6 +25,8 @@ Now you can use a script I made:
 bash build.sh -p  # -p is for packaging into a tarball
 ```
 With the new tarball you can proceed with the [installation](#install).
+## Uninstall
+To uninstall the software, just run `tagid --uninstall` in the terminal.
 ## License
 TagID is licensed under the MIT license.  
 

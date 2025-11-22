@@ -9,3 +9,4 @@ Usage: tagid [OPTIONS] DIRECTORY
     -i INFO,INFO...             Info: which info(s) to print.
                                 INFO can be: name (of the file), title, artist, album. At least one must be given
     -h                          Print this
+    --uninstall                 Remove the application
