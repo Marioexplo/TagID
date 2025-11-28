@@ -8,11 +8,11 @@ cd "$(dirname "$(realpath "$0")")" || error There was an error when accessing th
 l=BuildLogs.txt
 echo BUILD > $l
 ".venv/bin/pyinstaller" TagID.spec --noconfirm >>$l 2>&1 || error There was an error in the building process
-t=TagID
-i=install
-I=$(pwd)/$i
-ln -s "$I/Logo.png" dist/$t
 if [[ -n $1 ]] && [[ $1 == -p || $1 == --package ]]; then
+    i=install
+    t=TagID
+    I=$(pwd)/$i
+    ln -s "$I/Logo.png" dist/$t
     {
         echo
         echo PACKAGE
